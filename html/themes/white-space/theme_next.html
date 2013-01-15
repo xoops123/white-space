@@ -1,0 +1,114 @@
+<div>
+<p class="open"><a href="#open">もっと見る</a></p>
+<div id="slideBox">
+		<section id="main-content">
+
+				<{if $xoops_showcblock == 1}>
+					<{if $xoops_ccblocks}><{* Start Center Center Column BlockWeight = 0 *}>
+					<div id="featured" class="bg_blue">
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight == 0 }>
+							<div>
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					</div> <!-- END Featured -->
+					<{/if}><{* End Center Center Column *}>
+				<{/if}>
+
+
+			<div id="latest">
+
+				<section>
+					<div id="main-column">
+						<{include file="`$xoops_theme`/theme_centercolumn.html"}>
+					</div>
+				</section> <!-- END Main Column -->
+
+				<aside>
+
+					<{if $xoops_showlblock == 1}>
+					<div id="left-column">
+							<{foreach item=block from=$xoops_lblocks name=lbloop}>
+							<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+								<{if ! $block.title|strstr:"none"}><h4><{$block.title|regex_replace:"/\[\[\w+/":""}></h4><{/if}>
+								<{$block.content}>
+							</div>
+							<{/foreach}>
+					</div>
+					<{/if}>
+
+					<{if $xoops_showrblock == 1}>
+					<div id="right-column">
+							<{foreach item=block from=$xoops_rblocks name=rbloop}>
+								<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+									<{if ! $block.title|strstr:"none"}><h4><{$block.title|regex_replace:"/\[\[\w+/":""}></h4><{/if}>
+									<{$block.content}>
+								</div>
+							<{/foreach}>
+					</div>
+					<{/if}>
+
+				</aside>
+
+			</div> <!-- END Latest -->
+
+			<div class="clearfix"></div>
+
+			<div id="about">
+
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 1000-1499 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 1000  and $block.weight < 1500}>
+							<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+
+					<div class="clearfix">
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 1500-2000 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 1500  and $block.weight < 2000}>
+							<div class="block_individual">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+					</div>
+
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 2000-2499 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 2000  and $block.weight < 2500}>
+							<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+
+					<div class="clearfix">
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 2500-2999 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 2500  and $block.weight < 3000}>
+							<div class="block_individual">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+					</div>
+
+			</div>
+		</section>
+
+</div>
+</div>

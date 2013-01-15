@@ -1,0 +1,13 @@
+<ul class="clearfix">
+<{if $smarty.server.SCRIPT_FILENAME|basename == "index.php" and $smarty.server.SCRIPT_FILENAME|dirname|basename == $smarty.const.XOOPS_ROOT_PATH|basename}><{else}>
+	<li><a href="<{$xoops_url}>/"><dl><dt>Home<dt><dd>サイトのTopPage</dd></dl></a></li>
+<{/if}>
+	<li><a href="<{$xoops_url}>/modules/bulletin/"><dl><dt>News<dt><dd>marineからのお知らせ</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/wordpress/"><dl><dt>Dialy<dt><dd>気ままな徒然日記</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/xpwiki/"><dl><dt>Introduction<dt><dd>ここからはじめよう！ 新XOOPS入門</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/pico/"><dl><dt>Documents<dt><dd>資料が一杯！marine's書庫</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/webphoto/"><dl><dt>Webphoto<dt><dd>写真集</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/d3downloads/"><dl><dt>Download<dt><dd>テーマなどのダウンロード</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/d3forum/"><dl><dt>Forum<dt><dd>ご訪問帳ほか、掲示板</dd></dl></a></li>
+	<li><a href="<{$xoops_url}>/modules/liaise/"><dl><dt>Inquiry<dt><dd>お問い合わせは、こちらから</dd></dl></a></li>
+</ul>

@@ -1,0 +1,48 @@
+<div class="left-half">
+<{$xoops_sitename}>&nbsp;by&nbsp;<{$xoops_meta_author}>
+</div>
+<div class="right-half">
+<{$xoops_footer}>
+</div>
+
+<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 3000-3499 *}>
+	<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+	<{if $block.weight >= 3000  and $block.weight < 3500}>
+		<div class="block_full">
+		<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+		<{$block.content}>
+		</div>
+	<{/if}>
+	<{/foreach}>
+<{/if}>
+
+<div class="clearfix">
+<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight >= 3500 and <4000 *}>
+	<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+	<{if $block.weight >= 3500  and $block.weight < 4000}>
+		<div class="block_individual">
+		<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+		<{$block.content}>
+		</div>
+	<{/if}>
+	<{/foreach}>
+<{/if}>
+</div>
+
+<div id="footer-menu" class="align_center">
+<{if !$xoops_isuser}>
+	<a href="http://xoops123.com/">Theme designed by marine/mistgreen</a>&nbsp;|&nbsp;
+	<noscript><a href="<{$xoops_url}>/user.php">login(noscript)</a>&nbsp;|&nbsp;</noscript>
+	<a class="fancybox" href="#theme_login_block" title="<{$smarty.const._THEME_LANGUAGE_LOGIN}>"><{$smarty.const._THEME_LANGUAGE_LOGIN}></a>
+<{else}>
+	<a href="<{$xoops_url}>/user.php"><{$smarty.const._THEME_LANGUAGE_USER_ACCOUNT}></a>&nbsp;|&nbsp;
+	<a href="<{$xoops_url}>/edituser.php"><{$smarty.const._THEME_LANGUAGE_EDIT_ACCOUNT}></a>&nbsp;|&nbsp;
+	<a href="<{$xoops_url}>/notifications.php"><{$smarty.const._THEME_LANGUAGE_NORTIFICATION}></a>&nbsp;|&nbsp;
+	<a href="<{$xoops_url}>/viewpmsg.php" <{if $pm.new_messages}>class="new1"<{/if}>><{$smarty.const._THEME_LANGUAGE_VIEWPMSG}><{if $pm.new_messages}>(<{$pm.new_messages}>)<{/if}></a>&nbsp;|&nbsp;
+	<a href="<{$xoops_url}>/user.php?op=logout"><{$smarty.const._THEME_LANGUAGE_LOGOUT}></a>&nbsp;|&nbsp;
+	<{if $xoops_isadmin}>
+		<a href="<{$xoops_url}>/admin.php"><{$smarty.const._THEME_LANGUAGE_ADMIN_PAGE}></a>&nbsp;|&nbsp;
+	<{/if}>
+		<a href="http://xoops123.com/">Theme designed by marine/mistgreen</a>
+<{/if}>
+</div>

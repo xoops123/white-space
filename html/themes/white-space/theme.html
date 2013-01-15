@@ -1,0 +1,270 @@
+<{strip}>
+<{include_php file="`$smarty.const.XOOPS_THEME_PATH`/`$xoops_theme`/xugj_assign_theme_language_inc.php"}>
+<{include_php file="`$smarty.const.XOOPS_THEME_PATH`/`$xoops_theme`/xugj_assign_theme.php"}>
+<{include_php file="`$smarty.const.XOOPS_THEME_PATH`/`$xoops_theme`/xugj_already_js.php"}>
+<!DOCTYPE html>
+<{/strip}>
+<html lang="<{$xoops_langcode}>">
+<head>
+<meta charset="<{$xoops_charset}>" />
+<title><{$xoops_sitename}> - <{if $xoops_pagetitle}><{$xoops_pagetitle}><{else}><{$xoops_slogan}><{/if}></title>
+<meta name="robots" content="<{$xoops_meta_robots}>" />
+<meta name="keywords" content="<{$xoops_meta_keywords}>" />
+<meta name="description" content="<{$xoops_meta_description}>" />
+<meta name="rating" content="<{$xoops_meta_rating}>" />
+<meta name="author" content="<{$xoops_meta_author}> <{$xoops_meta_copyright}>" />
+<{if $smarty.server.HTTP_USER_AGENT|regex_replace:'/^.*MSIE\s*([0-9]+).*$/i':'\1' > 7}>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<{/if}>
+<{* OGP support *}>
+<meta property="og:title" content="<{$xoops_sitename}>" />
+<meta property="og:description" content="<{$xoops_meta_description}>" />
+<meta property="og:url" content="<{$xoops_url}>" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="<{$xoops_imageurl}>images/ogp_image.png" />
+<{* end OGP support *}>
+<link rel="stylesheet" type="text/css" href="<{$xoops_imageurl}>reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/xoops.css" />
+<link rel="stylesheet" type="text/css" href="<{$xoops_imageurl}>style.css" />
+<link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> 
+<![endif]-->
+<script type="text/javascript"><{$xoops_js|regex_replace:"/(\/\/\-\->|<!\-\-)/":""}></script>
+<{if ! $xcl22_jquery_is_already and ! $xugj_jquery_is_already}>
+<script type="text/javascript" src="<{$xoops_imageurl}>js/jquery-1.7.1.min.js"></script>
+<{/if}>
+<{if $xoops_module_header}><{$xoops_module_header}><{/if}><{if $xoops_block_header}><{$xoops_block_header}><{/if}>
+<{include file="`$xoops_theme`/theme_redirect_js.html"}>
+<{if $smarty.server.SCRIPT_FILENAME|basename == "index.php" and $smarty.server.SCRIPT_FILENAME|dirname|basename == $smarty.const.XOOPS_ROOT_PATH|basename}>
+<script type="text/javascript">
+jQuery(function(){
+     jQuery("#slideBox").hide();
+     jQuery(".open").click(function(){
+      jQuery("#slideBox").slideToggle("slow");
+     });
+});
+</script>
+<{else}>
+<{include file="`$xoops_theme`/theme_ext_js.html"}>
+<{/if}>
+<link rel="stylesheet" type="text/css" href="<{$xoops_imageurl}>modules.css" />
+<link rel="stylesheet" type="text/css" href="<{$xoops_imageurl}>media-queries.css" />
+</head>
+<body class="L<{$xoops_showlblock}>R<{$xoops_showrblock}> <{strip}>
+<{if $smarty.server.SCRIPT_FILENAME|basename == "index.php" and $smarty.server.SCRIPT_FILENAME|dirname|basename == $smarty.const.XOOPS_ROOT_PATH|basename}>
+	home
+<{else}>
+	<{if $xugj_trustdirname }>
+		<{$xugj_trustdirname}>
+	<{elseif !$xoops_dirname == ""}>
+		<{$xoops_dirname}>
+	<{else}>
+		other
+	<{/if}>
+<{/if}>
+"><{/strip}>
+
+<{if $smarty.server.SCRIPT_FILENAME|basename == "index.php" and $smarty.server.SCRIPT_FILENAME|dirname|basename == $smarty.const.XOOPS_ROOT_PATH|basename}>
+	<div id="wrapper">
+				<h1><a href="<{$xoops_url}>/"><{$xoops_sitename}></a></h1>
+
+			<div class="nav-top">
+			<{include file="$xoops_theme/theme_menu.html"}>
+			</div>
+
+	<{include file="$xoops_theme/theme_next.html"}>
+<{else}>
+		<header id="header" class="fixed">
+			<h1><a href="<{$xoops_url}>/"><{$xoops_sitename}></a><{strip}>&nbsp;&nbsp;
+					<span><{* module title *}><{include file="`$xoops_theme`/theme_moduletitle.html"}></span>
+			</h1><{/strip}>
+		</header>
+
+<div id="slide_column">
+	<{include file="$xoops_theme/theme_menu.html"}>
+	<{if $xoops_showlblock == 1}>
+		<{foreach item=block from=$xoops_lblocks name=lbloop}>
+			<div>
+				<{if ! $block.title|strstr:"none"}><h4><{$block.title|regex_replace:"/\[\[\w+/":""}></h4><{/if}>
+				<{$block.content}>
+			</div>
+		<{/foreach}>
+	<{/if}>
+</div>
+
+	<div id="wrapper">
+
+		<nav>
+			<div class="nav">
+			<{include file="$xoops_theme/theme_menu.html"}>
+			<div id="nav-pict"></div>
+			</div>
+		</nav>
+
+		<section id="main-content">
+			<div id="menu_s"><{* -- Submenu *}>
+				<{if $xugj_menus1}> |&nbsp;
+					<{foreach from=$xugj_menus1 item="menu1"}>
+							<{if stristr( $smarty.server.REQUEST_URI , $menu1.url )}>
+								<{assign var="xugj_menus2" value=$menu1.sub}>
+								<{assign var="menu1_class" value=" selected"}>
+							<{else}>
+								<{assign var="menu1_class" value=""}>
+							<{/if}>
+							<a href="<{$xoops_url}>/modules/<{$menu1.dirname}>/<{$menu1.url}>" class="menu_level1<{$menu1_class}>"><{$menu1.name}></a>&nbsp;|&nbsp;
+					<{/foreach}>
+				<{/if}>
+			</div><{* -- End Submenu *}>
+
+				<{if $xoops_showcblock == 1}>
+					<{if $xoops_ccblocks}><{* Start Center Center Column BlockWeight = 0 *}>
+					<div id="featured" class="bg_blue">
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight == 0 }>
+							<div>
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					</div> <!-- END Featured -->
+					<{/if}><{* End Center Center Column *}>
+				<{/if}>
+
+
+			<div id="latest">
+
+				<section>
+					<div id="main-column">
+						<{include file="`$xoops_theme`/theme_centercolumn.html"}>
+					</div>
+				</section> <!-- END Main Column -->
+
+				<aside>
+
+					<{if $xoops_showlblock == 1}>
+					<div id="left-column">
+							<{foreach item=block from=$xoops_lblocks name=lbloop}>
+							<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+								<{if ! $block.title|strstr:"none"}><h4><{$block.title|regex_replace:"/\[\[\w+/":""}></h4><{/if}>
+								<{$block.content}>
+							</div>
+							<{/foreach}>
+					</div>
+					<{/if}>
+
+					<{if $xoops_showrblock == 1}>
+					<div id="right-column">
+							<{foreach item=block from=$xoops_rblocks name=rbloop}>
+								<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+									<{if ! $block.title|strstr:"none"}><h4><{$block.title|regex_replace:"/\[\[\w+/":""}></h4><{/if}>
+									<{$block.content}>
+								</div>
+							<{/foreach}>
+					</div>
+					<{/if}>
+
+				</aside>
+
+			</div> <!-- END Latest -->
+
+			<div class="clearfix"></div>
+
+			<div id="about">
+
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 1000-1499 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 1000  and $block.weight < 1500}>
+							<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+
+					<div class="clearfix">
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 1500-2000 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 1500  and $block.weight < 2000}>
+							<div class="block_individual">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+					</div>
+
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 2000-2499 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 2000  and $block.weight < 2500}>
+							<div class="bg_<{cycle values="pink,yellow,green,orange,blue"}>">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+
+					<div class="clearfix">
+					<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight 2500-2999 *}>
+						<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+						<{if $block.weight >= 2500  and $block.weight < 3000}>
+							<div class="block_individual">
+							<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+							<{$block.content}>
+							</div>
+						<{/if}>
+						<{/foreach}>
+					<{/if}>
+					</div>
+
+			</div>
+		</section>
+
+		<div id="headerSearch" class="hs_top">
+		  <form id="headerSearch-searchform" name="searchform" action="<{$xoops_url}>/search.php" method="get" class="searchform">
+		  <input id="headerSearch-keywords" type="text" name="query" value="<{$smarty.const._THEME_LANGUAGE_SEARCH}>" class="textbox" />
+		  <input type="hidden" name="action" value="results" />
+		  <input type="image" src="<{$xoops_imageurl}>images/search-icon.png" name="searchSubmit" alt="<{$smarty.const._THEME_LANGUAGE_SEARCH}>"  title="<{$smarty.const._THEME_LANGUAGE_SEARCH}>" id="headerSearch-searchBtn" class="button" />
+		  </form>
+		</div>
+<{/if}>
+
+<div class="push"></div>
+</div> <!-- END Wrapper -->
+
+<{* login block *}>
+<{* <{include file="$xoops_theme/theme_cubelogin_block.html"}> *}>
+<{include file="$xoops_theme/theme_cubelogin_block.html"}>
+<{* End login block *}>
+
+		<footer>
+		<div id="footer">
+			<{include file="`$xoops_theme`/theme_footer.html"}>
+		</div>
+		</footer>
+
+<{if $xoops_ccblocks}><{* Start bottom Column BlockWeight >= 4000 *}>
+	<{foreach item=block from=$xoops_ccblocks name=ccloop}>
+	<{if $block.weight >= 4000}>
+		<div id="notice">
+		<p class="align_center"><a href="#notice" id="open-btn">close</p>
+				<div class="notice-contents">
+				<{if ! $block.title|strstr:"none"}><h3><{$block.title|regex_replace:"/\[\[\w+/":""}></h3><{/if}>
+				<{$block.content}>
+				</div>
+		</div>
+	<{/if}>
+	<{/foreach}>
+<{/if}>
+
+	<div id="xugj_pm_new_message" class="top-right"></div>
+</body>
+</html>

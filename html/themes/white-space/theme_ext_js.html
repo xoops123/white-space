@@ -1,0 +1,91 @@
+<script type="text/javascript" src="<{$xoops_imageurl}>js/jquery.easing.compatibility.js"></script>
+<script type="text/javascript" src="<{$xoops_imageurl}>js/fancybox/jquery.mousewheel-3.0.4.pack.js" charset="utf-8"></script>
+<script type="text/javascript" src="<{$xoops_imageurl}>js/fancybox/jquery.fancybox-1.3.4.pack.js" charset="utf-8"></script>
+<link rel="stylesheet" href="<{$xoops_imageurl}>js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" charset="utf-8"/>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("a.fancybox").fancybox({
+		'overlayColor': '#000',
+		'overlayOpacity': 0.3,
+		'cyclic': true ,
+	    'transitionIn'  : 'elastic',
+	    'transitionOut' : 'elastic',
+	    'easingIn'      : 'easeOutBack',
+	    'easingOut'     : 'easeInBack',
+		'speedIn'		: 900 ,
+		'speedOut'		: 600 ,
+		'hideOnOverlayClick': false
+	});
+	jQuery("a.iframe").fancybox({
+        'width': '80%',
+		'height': '80%',
+        'autoScale': false,
+		'transitionIn': 'none',
+		'transitionOut': 'none',
+		'type': 'iframe'
+	});
+});
+</script>
+<script type="text/javascript">
+jQuery(function() {
+	var notice = jQuery('#notice');
+	var contents = jQuery('#slide-contents');
+	//開くボタン
+	var openBtn = jQuery('#open-btn img');
+	var btnOpenFlug = false;
+	var openFlug = false;
+	var panelSwitch = function() {
+		//閉じる
+		if (openFlug == true ) {
+			notice.stop().animate({'width' : '0px','height' : '0px'}, 500); 
+		}
+		//開く
+		else if (openFlug == false) {
+			notice.stop().animate({'width' : '270px','height' : '270px'}, 500); 
+		}
+	};
+	//開くボタンクリックしたら
+	jQuery('#open-btn').click(function(){
+		panelSwitch();
+		openFlug = !openFlug;
+		btnOpenFlug = true;
+	});
+	//画面下位置を取得
+	var bottomPos = jQuery(document).height() - jQuery(window).height() - 500;
+	jQuery(window).scroll(function () {
+		if (!btnOpenFlug) {
+			if (jQuery(this).scrollTop() >= bottomPos) {
+				if (openFlug == false) {
+					panelSwitch();
+					openFlug = true;
+				}
+			} else {
+				if (openFlug) {
+					panelSwitch();
+					openFlug = false;
+				}
+			}
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+jQuery(function() {
+	var headerSearch = jQuery('#headerSearch');
+	var GuideSentence = '<{$smarty.const._THEME_LANGUAGE_SEARCH}>';
+	var long = '200px';
+	var short = '156px';
+	jQuery('input#headerSearch-keywords').focus(function(){
+	    if(jQuery(this).val()===GuideSentence){
+	        jQuery(this).val('');
+	    }
+	    jQuery(this).animate({width: long},400);
+	});
+	jQuery('input#headerSearch-keywords').blur(function(){
+	    if(jQuery(this).val()===''){
+	        jQuery(this).val(GuideSentence);
+	    }
+	    jQuery(this).animate({width: short},500);
+	});
+});
+</script>
