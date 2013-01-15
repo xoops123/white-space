@@ -85,18 +85,6 @@ jQuery(function(){
 			</h1><{/strip}>
 		</header>
 
-<div id="slide_column">
-	<{include file="$xoops_theme/theme_menu.html"}>
-	<{if $xoops_showlblock == 1}>
-		<{foreach item=block from=$xoops_lblocks name=lbloop}>
-			<div>
-				<{if ! $block.title|strstr:"none"}><h4><{$block.title|regex_replace:"/\[\[\w+/":""}></h4><{/if}>
-				<{$block.content}>
-			</div>
-		<{/foreach}>
-	<{/if}>
-</div>
-
 	<div id="wrapper">
 
 		<nav>
@@ -245,11 +233,11 @@ jQuery(function(){
 <{include file="$xoops_theme/theme_cubelogin_block.html"}>
 <{* End login block *}>
 
-		<footer>
-		<div id="footer">
-			<{include file="`$xoops_theme`/theme_footer.html"}>
-		</div>
-		</footer>
+<footer>
+	<div id="footer">
+		<{include file="`$xoops_theme`/theme_footer.html"}>
+	</div>
+</footer>
 
 <{if $xoops_ccblocks}><{* Start bottom Column BlockWeight >= 4000 *}>
 	<{foreach item=block from=$xoops_ccblocks name=ccloop}>
@@ -265,6 +253,6 @@ jQuery(function(){
 	<{/foreach}>
 <{/if}>
 
-	<div id="xugj_pm_new_message" class="top-right"></div>
+<div id="xugj_pm_new_message" class="top-right"></div>
 </body>
 </html>
