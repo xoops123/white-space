@@ -5,7 +5,7 @@
 Name="white-space"
 Depends=Legacy_RenderSystem,legacy
 Url="http://xoops123.com/"
-Version="0.82"
+Version="0.83"
 
 [Theme]
 RenderSystem=Legacy_RenderSystem
